@@ -1,0 +1,6 @@
+# dependencies
+/node_modules
+# Generated folder
+/lib
+# Environment variables
+.env
