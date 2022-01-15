@@ -8,7 +8,7 @@ import fetch from "cross-fetch";
 import {createReadStream} from "fs";
 import {resolve} from "path";
 import {romanNumerals} from "./misc";
-import {Disease, Category, Block, Chapter} from "../interfaces/icd10";
+import {Disease, Category, Block, Chapter, Subcategory} from "../interfaces/icd10";
 
 // CSV files paths
 export const chaptersCsvFilePath = resolve(__dirname, "../../", "data", "csv", "icd10-2019-dx-chapters.csv");
@@ -225,6 +225,44 @@ export const getBlock = (blockId : string) : Promise<Block | undefined> => new P
 });
 
 /**
+ * Retrieve blocks which values of given key matches a given string
+ * @param {string} key: String to be searched on blocks keys
+ * @param {string} query: String to be searched on keys
+ * @return {Promise<Block[] | undefined>}
+ */
+export const queryBlocksByKey = (key: string, query : string) : Promise<Block[] | undefined> => new Promise((resolve, reject)=>{
+  if (!query) reject(new Error("A query string is required"));
+  const MINIMUM_LENGHT = 1;
+  if (query?.length<MINIMUM_LENGHT) reject(new Error(`At least ${MINIMUM_LENGHT} characters are required`));
+  // Keys that are valid for a Block model
+  const validKeys : string[] = ["id", "label"];
+
+  // Verify provided key is a valid one
+  if (!validKeys.includes(String(key).toLowerCase())) {
+    reject(new Error("A valid key must be provided. Options: "+validKeys.join(", ")));
+  }
+  const matches : any[] = [];
+  try {
+    const SEPARATOR = ";";
+    const csvStream = createReadStream(blocksCsvFilePath, "utf-8").pipe(csv({separator: SEPARATOR}));
+    csvStream.on("data", (block : Record<string, string>)=>{
+      if (block) {
+        const normalizedQueryString = query?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+        const blockValue: string | undefined = block[String(key)];
+        const normalizedBlockValue = blockValue?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+        // Verify query is a substring of Chapter label and add it to matches
+        if (normalizedBlockValue?.includes(normalizedQueryString)) matches.push(block);
+      }
+    });
+    // At the end return found matches (undefined if none)
+    csvStream.on("end", ()=>resolve(matches.length? matches : undefined));
+  } catch (error) {
+    console.log(error);
+    reject(error);
+  }
+});
+
+/**
  * Fetch all Categories of a block from WHO API
  * @param {string} blockId: Chapter ID
  * @return {Promise<any[] | undefined>}: Chapter if found, otherwise undefined
@@ -246,6 +284,11 @@ export const fetchBlockCategories = async (blockId : string) : Promise<any[] | u
   }
 };
 
+/**
+ * Retrieve ALL categories (only for a given block if ID is provided)
+ * @param {string} blockId: ID of block
+ * @return {Category[]|undefined}: All categories (only for a given block if valid block ID is provided)
+ */
 export const getAllCategories = async (blockId? : string) : Promise<Category[] | undefined> => new Promise((resolve, reject)=>{
   const SEPARATOR = ";";
   const categories : Category[] = [];
@@ -271,8 +314,14 @@ export const getAllCategories = async (blockId? : string) : Promise<Category[] |
   }
 });
 
+/**
+ * Retrieve a Category correspondent to a given ID
+ * @param {string} categoryId
+ * @return {Promise<Category|undefined>}
+ */
 export const getCategory = async (categoryId : string) : Promise<Category | undefined> => new Promise((resolve, reject)=>{
   if (!categoryId) throw new Error("categoryId is required");
+  // CSV Separator
   const SEPARATOR = ";";
   try {
     const csvStream = createReadStream(categoriesCsvFilePath, "utf-8").pipe(csv({separator: SEPARATOR}));
@@ -288,6 +337,72 @@ export const getCategory = async (categoryId : string) : Promise<Category | unde
     // If end reached, none matched
     csvStream.on("end", ()=>resolve(undefined));
   } catch (error) {
+    reject(error);
+  }
+});
+
+/**
+ * Retrieve all Subcategories (Also known as Diseases or Diagnostics)
+ * @param {string} categoryId: ID of category to fetch
+ * @return {Promise<Subcategory[]|undefined>}: Array of all categories (of a given category if provided ID), or undefined if none
+ */
+export const getAllSubcategories = (categoryId?: string): Promise<Subcategory[]|undefined> => new Promise((resolve, reject)=>{
+  const subcategories: Subcategory[] | undefined = [];
+  try {
+    const stream = createReadStream(subcategoriesCsvFilePath, "utf-8").pipe(csv());
+    stream.on("data", (chunk : {code: string, name: string}) => {
+      const id = chunk.code;
+      const label = chunk.name;
+      const inferredCategoryId = id.slice(0, 3);
+
+      if (!categoryId || inferredCategoryId.toLowerCase().trim() === categoryId.toLowerCase().trim()) {
+        subcategories.push({
+          id,
+          label,
+          categoryId: inferredCategoryId,
+        });
+      }
+    });
+    stream.on("end", () =>resolve(subcategories.length? subcategories : undefined));
+  } catch (error: any) {
+    reject(error);
+  }
+});
+
+/**
+ * Retrieve query which values of given key matches a given string
+ * @param {string} key: String to be searched on categories keys
+ * @param {string} query: String to be searched on categories keys
+ * @return {Promise<Category[] | undefined>}
+ */
+export const queryCategoriesByKey = (key: string, query : string) : Promise<Category[] | undefined> => new Promise((resolve, reject)=>{
+  if (!query) reject(new Error("A query string is required"));
+  const MINIMUM_LENGHT = 1;
+  if (query?.length<MINIMUM_LENGHT) reject(new Error(`At least ${MINIMUM_LENGHT} characters are required`));
+  // Keys that are valid for a Category model
+  const validKeys : string[] = ["id", "label"];
+
+  // Verify provided key is a valid one
+  if (!validKeys.includes(String(key).toLowerCase())) {
+    reject(new Error("A valid key must be provided. Options: "+validKeys.join(", ")));
+  }
+  const matches : any[] = [];
+  try {
+    const SEPARATOR = ";";
+    const csvStream = createReadStream(categoriesCsvFilePath, "utf-8").pipe(csv({separator: SEPARATOR}));
+    csvStream.on("data", (category : Record<string, string>)=>{
+      if (category) {
+        const normalizedQueryString = query?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+        const categoryValue: string | undefined = category[String(key)];
+        const normalizedBlockValue = categoryValue?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+        // Verify query is a substring of Chapter label and add it to matches
+        if (normalizedBlockValue?.includes(normalizedQueryString)) matches.push(category);
+      }
+    });
+    // At the end return found matches (undefined if none)
+    csvStream.on("end", ()=>resolve(matches.length? matches : undefined));
+  } catch (error) {
+    console.log(error);
     reject(error);
   }
 });
@@ -363,7 +478,6 @@ export const queryDiseasesByName = (queryString : string, exact? : boolean) : Pr
     reject(error);
   }
 });
-
 
 /**
  * Search diseases which codes match given string code

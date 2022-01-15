@@ -1,10 +1,11 @@
 {
-  "name": "emr-backend",
+  "name": "icd-api",
   "version": "1.0.0",
   "description": "Express API Backend for Wellness EMR app",
   "main": "lib/index.js",
   "scripts": {
     "start": "npm run lint && npm run build && node lib/server",
+    "postinstall": "npm run build",
     "dev": "start cmd /k \"npm run build-watch\" && nodemon lib/server",
     "build": "tsc",
     "build-watch": "tsc --watch",

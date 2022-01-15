@@ -4,6 +4,8 @@
  * @copyright: Wellness Mervra 2022
  */
 
+import {SortParameters} from "../interfaces/datahandler";
+
 interface PaginatedData{
     data: any[],
     totalPages: number,
@@ -30,7 +32,7 @@ export const paginateData = (data : any[], page? : number, elementsPerPage? : nu
   if (!count||count<1) count = DEFAULT_COUNT;
   if (count>data.length) count = data.length;
   // Compute total of pages according to data
-  let totalPages = Math.round(data.length/count);
+  let totalPages = Math.ceil(data.length/count);
   if ( totalPages < 1) totalPages = 1;
   // Get current page  as processed integer
   let currentPage = Math.floor(Number(page) || DEFAULT_PAGE);
@@ -47,4 +49,28 @@ export const paginateData = (data : any[], page? : number, elementsPerPage? : nu
     totalElements: data.length,
     data: data.slice(startIndex, endIndex),
   };
+};
+
+
+/**
+ * Sort an array of data alphabetically
+ * @param {SortParameters} parameters
+ * @param {string} order: sort order (asc or desc)
+ * @return {any[]}: Sorted data
+ */
+export const sortData = (parameters : SortParameters)=>{
+  const {key, data, order} = parameters;
+  if (!Array.isArray(data)) throw new Error("Data must be an array");
+  if (!key) throw new Error("Parameter to sort is required");
+
+  const NOT_DEFAULT_SORT_ORDER = "desc";
+  // Function to sort alphabetically
+  const compare = (prop: string | number) =>
+    (a: any, b: any) =>{
+      if (a[prop] > b[prop]) return order !== NOT_DEFAULT_SORT_ORDER? 1 : -1;
+      if (b[prop] > a[prop]) return order !== NOT_DEFAULT_SORT_ORDER? -1 : 1;
+      return 0;
+    };
+  // Return sorted data
+  return data.sort(compare(key));
 };

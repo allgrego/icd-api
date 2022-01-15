@@ -1,4 +1,5 @@
 import {Router as expressRouter} from "express";
+import {stdRouteNotFound} from "../functions/express";
 // Routes
 import v1Routes from "./v1";
 
@@ -27,8 +28,6 @@ router.get("/", (req, res) =>{
 router.use("/v1", v1Routes);
 
 // Fallback (404)
-router.get("**", (req, res) =>{
-  res.status(404).json({error: {code: "not-found", message: "Invalid route"}});
-});
+router.get("**", (req, res) =>stdRouteNotFound(res));
 
 export default router;

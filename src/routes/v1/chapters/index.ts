@@ -4,8 +4,8 @@
  */
 
 import {Router as expressRouter} from "express";
-import {paginateData} from "../../../functions/datahandler";
-import {resError} from "../../../functions/express";
+import {paginateData, sortData} from "../../../functions/datahandler";
+import {getRequestPaginationParameters, getRequestSortParameters, resError} from "../../../functions/express";
 import {getAllBlocks, getAllChapters, getChapter, queryChaptersByLabel} from "../../../functions/icd10";
 import {Block} from "../../../interfaces/icd10";
 
@@ -19,15 +19,18 @@ router.use((req, res, next)=>{
 
 // Retrieves all chapters
 router.get("/", async (req, res)=>{
-  const {page, count} = req.query;
-  const DEFAULT_COUNT = 10;
   try {
     const chapters = await getAllChapters();
     if (!chapters) {
       resError(res, 500, "internal", "Chapters could not be retrieved");
       return;
     }
-    const data = paginateData(chapters, Number(page), Number(count)||DEFAULT_COUNT);
+    // Default number of elements per page
+    const DEFAULT_COUNT = 10;
+    // Get pagination parameters from request
+    const {page, count} = getRequestPaginationParameters(req, DEFAULT_COUNT);
+    // Paginate data (NOT sorted)
+    const data = paginateData(chapters, page, count);
     res.json(data);
   } catch (error: any) {
     console.log("[ERROR]: "+error.message);
@@ -64,8 +67,6 @@ router.get("/:chapterId", async (req, res)=>{
 // Retrieve all blocks of a specific chapter
 router.get("/:chapterId/blocks", async (req, res)=>{
   const {chapterId} = req.params;
-  const {page, count} = req.query;
-  const DEFAULT_COUNT = 10;
 
   if (!chapterId) {
     resError(res, 400, "invalid-argument", "A valid chapter ID is required");
@@ -82,8 +83,25 @@ router.get("/:chapterId/blocks", async (req, res)=>{
       resError(res, 404, "not-found", "No blocks were found for given chapter ID");
       return;
     }
-    const data = paginateData(blocks, Number(page), Number(count)||DEFAULT_COUNT);
-    res.json(data);
+    // Remove chapter ID from each block
+    const processedBlocks = blocks.map((b: Block)=>{
+      return {
+        id: b.id,
+        label: b.label,
+      };
+    });
+    // Sort Parameters from request (or default)
+    const sortParams = getRequestSortParameters(req, processedBlocks, "id");
+    // Sort blocks
+    const sortedBlocks = sortData(sortParams);
+
+    // Pagination Parameters from request (or default)
+    const DEFAULT_COUNT = 10;
+    const {page, count} = getRequestPaginationParameters(req, DEFAULT_COUNT);
+    // Paginate Data and get pagination parameters
+    const data = paginateData(sortedBlocks, page, count);
+    // Send JSON data
+    res.json({chapterId: chapter.id, chapterLabel: chapter.label, ...data});
   } catch (error:any) {
     console.log("[ERROR]: "+error.message);
     resError(res, 500, "internal", "Something wrong happened! "+error.message);
@@ -92,14 +110,14 @@ router.get("/:chapterId/blocks", async (req, res)=>{
 });
 
 // Query chapters which labels match a given parameter
-router.get("/q/label", async (req, res)=>{
-  const {page, count, q: queryString} = req.query;
-  // Default number of elements per page
-  const DEFAULT_COUNT = 10;
+router.get("/search/label/:queryString", async (req, res)=>{
+  const {queryString} = req.params;
   if (!queryString) {
-    resError(res, 400, "invalid-argument", "A valid query string (q parameter) is required");
+    resError(res, 400, "bad-request", "A valid query string (q parameter) is required");
     return;
   }
+  // Default number of elements per page
+  const DEFAULT_COUNT = 10;
   try {
     // Retrieve matches
     const chaptersMatches = await queryChaptersByLabel(String(queryString));
@@ -109,7 +127,8 @@ router.get("/q/label", async (req, res)=>{
       return;
     }
 
-    const data = paginateData(chaptersMatches, Number(page), Number(count)||DEFAULT_COUNT);
+    const {page, count} = getRequestPaginationParameters(req, DEFAULT_COUNT);
+    const data = paginateData(chaptersMatches, page, count);
     // Send json response
     res.json(data);
   } catch (error:any) {
