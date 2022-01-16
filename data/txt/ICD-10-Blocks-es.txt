@@ -1,0 +1,201 @@
+A00-A09  Enfermedades infecciosas intestinales
+A15-A19  Tuberculosis
+A20-A28  Ciertas zoonosis bacterianas
+A30-A49  Otras enfermedades bacterianas
+A50-A64  Infecciones con modo de transmisión predominantemente sexual
+A65-A69  Otras enfermedades debidas a espiroquetas
+A70-A74  Otras enfermedades causadas por clamidias
+A75-A79  Rickettsiosis
+A80-A89  Infecciones virales del sistema nervioso central
+A90-A99  Fiebres virales transmitidas por artrópodos y fiebres virales hemorrágicas
+B00-B09  Infecciones virales caracterizadas por lesiones de la piel y de las membranas mucosas
+B15-B19  Hepatitis viral
+B20-B24  Enfermedad por virus de la inmunodeficiencia humana [VIH]
+B25-B34  Otras enfermedades virales
+B35-B49  Micosis
+B50-B64  Enfermedades debidas a protozoarios
+B65-B83  Helmintiasis
+B85-B89  Pediculosis, acariasis y otras infestaciones
+B90-B94  Secuelas de enfermedades infecciosas y parasitarias
+B95-B97  Bacterias, virus y otros agentes infecciosos
+B99-B99  Otras enfermedades infecciosas
+C00-C97  Tumores malignos
+D00-D09  Tumores in situ
+D10-D36  Tumores benignos
+D37-D48  Tumores de comportamiento incierto o desconocido
+D50-D53  Anemias nutricionales
+D55-D59  Anemias hemolíticas
+D60-D64  Anemias aplásticas y otras anemias
+D65-D69  Defectos de la coagulación, púrpura y otras afecciones hemorrágicas
+D70-D77  Otras enfermedades de la sangre y de los órganos hematopoyéticos
+D80-D89  Ciertos trastornos que afectan el mecanismo de la inmunidad
+E00-E07  Trastornos de la glándula tiroides
+E10-E14  Diabetes mellitus
+E15-E16  Otros trastornos de la regulación de la glucosa y de la secreción interna del páncreas
+E20-E35  Trastornos de otras glándulas endocrinas
+E40-E46  Desnutrición
+E50-E64  Otras deficiencias nutricionales
+E65-E68  Obesidad y otros tipos de hiperalimentación
+E70-E90  Trastornos metabólicos
+F00-F09  Trastornos mentales orgánicos, incluidos los trastornos sintomáticos
+F10-F19  Trastornos mentales y del comportamiento debidos al uso de sustancias psicoactivas
+F20-F29  Esquizofrenia, trastornos esquizotípicos y trastornos delirantes
+F30-F39  Trastornos del humor [afectivos]
+F40-F48  Trastornos neuróticos, trastornos relacionados con el estrés y trastornos somatomorfos
+F50-F59  Síndromes del comportamiento asociados con alteraciones fisiológicas y factores físicos
+F60-F69  Trastornos de la personalidad y del comportamiento en adultos
+F70-F79  Retraso mental
+F80-F89  Trastornos del desarrollo psicológico
+F90-F98  Trastornos emocionales y del comportamiento que aparecen habitualmente en la niñez y en la adolescencia
+F99-F99  Trastorno mental no especificado
+G00-G09  Enfermedades inflamatorias del sistema nervioso central
+G10-G13  Atrofias sistémicas que afectan principalmente el sistema nervioso central
+G20-G26  Trastornos extrapiramidales y del movimiento
+G30-G32  Otras enfermedades degenerativas del sistema nervioso
+G35-G37  Enfermedades desmielinizantes del sistema nervioso central
+G40-G47  Trastornos episódicos y paroxísticos
+G50-G59  Trastornos de los nervios, de las raíces y de los plexos nerviosos
+G60-G64  Polineuropatías y otros trastornos del sistema nervioso periférico
+G70-G73  Enfermedades musculares y de la unión neuromuscular
+G80-G83  Parálisis cerebral y otros síndromes paralíticos
+G90-G99  Otros trastornos del sistema nervioso
+H00-H06  Trastornos del párpado, aparato lagrimal y órbita
+H10-H13  Trastornos de la conjuntiva
+H15-H22  Trastornos de la esclerótica, córnea, iris y cuerpo ciliar
+H25-H28  Trastornos del cristalino
+H30-H36  Trastornos de la coroides y de la retina
+H40-H42  Glaucoma
+H43-H45  Trastornos del cuerpo vítreo y del globo ocular
+H46-H48  Trastornos del nervio óptico y de las vías ópticas
+H49-H52  Trastornos de los músculos oculares, del movimiento binocular, de la acomodación y de la refracción
+H53-H54  Alteraciones de la visión y ceguera
+H55-H59  Otros trastornos del ojo y sus anexos
+H60-H62  Enfermedades del oído externo
+H65-H75  Enfermedades del oído medio y de la mastoides
+H80-H83  Enfermedades del oído interno
+H90-H95  Otros trastornos del oído
+I00-I02  Fiebre reumática aguda
+I05-I09  Enfermedades cardíacas reumáticas crónicas
+I10-I15  Enfermedades hipertensivas
+I20-I25  Enfermedades isquémicas del corazón
+I26-I28  Enfermedad cardiopulmonar y enfermedades de la circulación pulmonar 
+I30-I52  Otras formas de enfermedad del corazón
+I60-I69  Enfermedades cerebrovasculares
+I70-I79  Enfermedades de las arterias, de las arteriolas y de los vasos capilares
+I80-I89  Enfermedades de las venas y de los vasos y ganglios linfáticos, no clasificadas en otra parte
+I95-I99  Otros trastornos y los no especificados del sistema circulatorio
+J00-J06  Infecciones agudas de las vías respiratorias superiores
+J09-J18  Influenza (gripe) y neumonía
+J20-J22  Otras infecciones agudas de las vías respiratorias inferiores
+J30-J39  Otras enfermedades de las vías respiratorias superiores
+J40-J47  Enfermedades crónicas de las vías respiratorias inferiores
+J60-J70  Enfermedades del pulmón debidas a agentes externos
+J80-J84  Otras enfermedades respiratorias que afectan principalmente el intersticio
+J85-J86  Afecciones supurativas y necróticas de las vías respiratorias inferiores
+J90-J94  Otras enfermedades de la pleura
+J95-J99  Otras enfermedades del sistema respiratorio
+L00-L08  Infecciones de la piel y del tejido subcutáneo
+L10-L14  Trastornos flictenulares
+L20-L30  Dermatitis y eczema
+L40-L45  Trastornos papuloescamosos
+L50-L54  Urticaria y eritema
+L55-L59  Trastornos de la piel y del tejido subcutáneo relacionados con radiación
+L60-L75  Trastornos de las faneras
+L80-L99  Otros trastornos de la piel y del tejido subcutáneo
+M00-M25  Artropatías
+M30-M36  Trastornos sistémicos del tejido conjuntivo
+M40-M54  Dorsopatías
+M60-M79  Trastornos de los tejidos blandos
+M80-M94  Osteopatías y condropatías
+M95-M99  Otros trastornos del sistema osteomuscular y del tejido conjuntivo
+N00-N08  Enfermedades glomerulares
+N10-N16  Enfermedad renal tubulointersticial
+N17-N19  Insuficiencia renal
+N20-N23  Litiasis urinaria
+N25-N29  Otros trastornos del riñón y del uréter
+N30-N39  Otras enfermedades del sistema urinario
+N40-N51  Enfermedades de los órganos genitales masculinos
+N60-N64  Trastornos de la mama
+N70-N77  Enfermedades inflamatorias de los órganos pélvicos femeninos
+N80-N98  Trastornos no inflamatorios de los órganos genitales femeninos
+N99-N99  Otros trastornos del sistema genitourinario
+O00-O08  Embarazo terminado en aborto
+O10-O16  Edema, proteinuria y trastornos hipertensivos en el embarazo, el parto y el puerperio
+O20-O29  Otros trastornos maternos relacionados principalmente con el embarazo
+O30-O48  Atención materna relacionada con el feto y la cavidad amniótica y con posibles problemas del parto
+O60-O75  Complicaciones del trabajo de parto y del parto
+O80-O84  Parto
+O85-O92  Complicaciones principalmente relacionadas con el puerperio
+O94-O99  Otras afecciones obstétricas no clasificadas en otra parte
+P00-P04  Feto y recién nacido afectados por factores maternos y por complicaciones del embarazo, del trabajo de parto y del parto
+P05-P08  Trastornos relacionados con la duración de la gestación y el crecimiento fetal
+P10-P15  Traumatismo del nacimiento
+P20-P29  Trastornos respiratorios y cardiovasculares específicos del período perinatal
+P35-P39  Infecciones específicas del período perinatal
+P50-P61  Trastornos hemorrágicos y hematológicos del feto y del recién nacido
+P70-P74  Trastornos endocrinos y metabólicos transitorios específicos del feto y del recién nacido
+P75-P78  Trastornos del sistema digestivo del feto y del recién nacido
+P80-P83  Afecciones asociadas con la regulación tegumentaria y la temperatura del feto y del recién nacido
+P90-P96  Otros trastornos originados en el período perinatal
+Q00-Q07  Malformaciones congénitas del sistema nervioso
+Q10-Q18  Malformaciones congénitas del ojo, del oído, de la cara y del cuello
+Q20-Q28  Malformaciones congénitas del sistema circulatorio
+Q30-Q34  Malformaciones congénitas del sistema respiratorio
+Q35-Q37  Fisura del paladar y labio leporino
+Q38-Q45  Otras malformaciones congénitas del sistema digestivo
+Q50-Q56  Malformaciones congénitas de los órganos genitales
+Q60-Q64  Malformaciones congénitas del sistema urinario
+Q65-Q79  Malformaciones y deformidades congénitas del sistema osteomuscular
+Q80-Q89  Otras malformaciones congénitas
+Q90-Q99  Anomalías cromosómicas, no clasificadas en otra parte
+R00-R09  Síntomas y signos que involucran los sistemas circulatorio y respiratorio
+R10-R19  Síntomas y signos que involucran el sistema digestivo y el abdomen
+R20-R23  Síntomas y signos que involucran la piel y el tejido subcutáneo
+R25-R29  Síntomas y signos que involucran los sistemas nervioso y osteomuscular
+R30-R39  Síntomas y signos que involucran el sistema urinario
+R40-R46  Síntomas y signos que involucran el conocimiento, la percepción, el estado emocional y la conducta
+R47-R49  Síntomas y signos que involucran el habla y la voz
+R50-R69  Síntomas y signos generales
+R70-R79  Hallazgos anormales en el examen de sangre, sin diagnóstico
+R80-R82  Hallazgos anormales en el examen de orina, sin diagnóstico
+R83-R89  Hallazgos anormales en el examen de otros líquidos, sustancias y tejidos corporales, sin diagnóstico
+R90-R94  Hallazgos anormales en diagnóstico por imágenes y en estudios funcionales, sin diagnóstico
+R95-R99  Causas de mortalidad mal definidas y desconocidas
+S00-S09  Traumatismos de la cabeza
+S10-S19  Traumatismos del cuello
+S20-S29  Traumatismos del tórax
+S30-S39  Traumatismos del abdomen, de la región lumbosacra, de la columna   lumbar y de la pelvis
+S40-S49  Traumatismos del hombro y del brazo
+S50-S59  Traumatismos del antebrazo y del codo
+S60-S69  Traumatismos de la muñeca y de la mano
+S70-S79  Traumatismos de la cadera y del muslo
+S80-S89  Traumatismos de la rodilla y de la pierna
+S90-S99  Traumatismos del tobillo y del pie
+T00-T07  Traumatismos que afectan múltiples regiones del cuerpo
+T08-T14  Traumatismos de parte no especificada del tronco, miembro o región   del cuerpo
+T15-T19  Efectos de cuerpos extraños que penetran por orificios naturales
+T20-T32  Quemaduras y corrosiones
+T33-T35  Congelamiento
+T36-T50  Envenenamiento por drogas, medicamentos y sustancias biológicas
+T51-T65  Efectos tóxicos de sustancias de procedencia principalmente no medicinal
+T66-T78  Otros efectos y los no especificados de causas externas
+T79-T79  Algunas complicaciones precoces de traumatismos
+T80-T88  Complicaciones de la atención médica y quirúrgica, no clasificadas en otra parte
+T90-T98  Secuelas de traumatismos, de envenenamientos y de otras consecuencias de causas externas
+V01-X59  Accidentes
+X60-X84  Lesiones autoinfligidas intencionalmente
+X85-Y09  Agresiones
+Y10-Y34  Eventos de intención no determinada
+Y35-Y36  Intervención legal y operaciones de guerra
+Y40-Y84  Complicaciones de la atención médica y quirúrgica
+Y85-Y89  Secuelas de causas externas de morbilidad y de mortalidad
+Y90-Y98  Factores suplementarios relacionados con causas de morbilidad y de mortalidad clasificadas en otra parte
+Z00-Z13  Personas en contacto con los servicios de salud para investigación y exámenes
+Z20-Z29  Personas con riesgos potenciales para su salud, relacionados con enfermedades transmisibles
+Z30-Z39  Personas en contacto con los servicios de salud en circunstancias relacionadas con la reproducción
+Z40-Z54  Personas en contacto con los servicios de salud para procedimientos específicos y cuidados de salud
+Z55-Z65  Personas con riesgos potenciales para su salud, relacionados con circunstancias socioeconómicas y psicosociales
+Z70-Z76  Personas en contacto con los servicios de salud por otras circunstancias
+Z80-Z99  Personas con riesgos potenciales para su salud, relacionados con su historia familiar y personal, y algunas condiciones que influyen sobre su estado de salud
+U00-U49   Asignación provisoria de nuevas afecciones de etiología incierta
+U50-U99   Códigos para investigaciones y subclasificaciones alternativas
