@@ -184,7 +184,11 @@ export const initCategories = async () => {
   }
 };
 
-
+/**
+ * Translate Blocks to spanish
+ * Source of translation: http://ais.paho.org/classifications/chapters/
+ * @return {void}
+ */
 export const translateBlocks = async () : Promise<void> => new Promise((resolve, reject)=>{
   const blocksCsvFilePathEn = fsResolve(__dirname, "../../", "data", "csv", "icd10-2019-dx-blocks-en.csv");
   const SEPARATOR = ";";
